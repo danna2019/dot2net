@@ -39,9 +39,10 @@ const IPPrefixLengthReplacerFooter string = "plen"
 const OutputTinet string = "tinet"
 const OutputClab string = "clab"
 const OutputAsis string = "command"
+const OutputTentou string = "tentou"
 
 func AllOutput() []string {
-	return []string{OutputTinet, OutputClab, OutputAsis}
+	return []string{OutputTinet, OutputClab, OutputAsis, OutputTentou}
 }
 
 type Config struct {
@@ -339,6 +340,7 @@ type NodeClass struct {
 	MgmtInterface string                 `yaml:"mgmt_interfaceclass" mapstructure:"mgmt_interfaceclass"` // InterfaceClass name for mgmt
 	TinetAttr     map[string]interface{} `yaml:"tinet" mapstructure:"tinet"`                             // tinet attributes
 	ClabAttr      map[string]interface{} `yaml:"clab" mapstructure:"clab"`                               // containerlab attributes
+	TentouAttr    map[string]interface{} `yaml:"tentou" mapstructure:"tentou"`
 }
 
 type InterfaceClass struct {
@@ -356,6 +358,7 @@ type InterfaceClass struct {
 	Prefix    string                 `yaml:"prefix" mapstructure:"prefix"` // prefix of auto-naming
 	TinetAttr map[string]interface{} `yaml:"tinet" mapstructure:"tinet"`   // tinet attributes
 	ClabAttr  map[string]interface{} `yaml:"clab" mapstructure:"clab"`     // containerlab attributes
+	TentouAttr map[string]interface{} `yaml:"tentou" mapstructure:"tentou"`
 }
 
 // type ConnectionClass struct {
@@ -374,6 +377,7 @@ type ConnectionClass struct {
 	Prefix    string                 `yaml:"prefix" mapstructure:"prefix"` // prefix of interface auto-naming
 	TinetAttr map[string]interface{} `yaml:"tinet" mapstructure:"tinet"`   // tinet attributes
 	ClabAttr  map[string]interface{} `yaml:"clab" mapstructure:"clab"`     // containerlab attributes
+	TentouAttr map[string]interface{} `yaml:"tentou" mapstructure:"tentou"`
 }
 
 type GroupClass struct {

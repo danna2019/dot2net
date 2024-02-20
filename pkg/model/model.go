@@ -262,6 +262,7 @@ func checkClasses(cfg *Config, nm *NetworkModel) error {
 				}
 				node.TinetAttr = &nc.TinetAttr
 				node.ClabAttr = &nc.ClabAttr
+				node.TentouAttr = &nc.TentouAttr
 			} else {
 				if nc.Prefix != "" {
 					return fmt.Errorf("prefix can be specified only in primary class")
@@ -269,7 +270,7 @@ func checkClasses(cfg *Config, nm *NetworkModel) error {
 				if nc.MgmtInterface != "" {
 					return fmt.Errorf("mgmt inteface class can be specified only in primary class")
 				}
-				if len(nc.TinetAttr) > 0 || len(nc.ClabAttr) > 0 {
+				if len(nc.TinetAttr) > 0 || len(nc.ClabAttr) > 0 || len(nc.TentouAttr) > 0 {
 					return fmt.Errorf("output-specific attributes can be specified only in primary class")
 				}
 			}

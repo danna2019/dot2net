@@ -9,6 +9,7 @@ var commands = []*cli.Command{
 	commandParams,
 	commandVisual,
 	commandData,
+	commandTentou,
 }
 
 var commandCommand = &cli.Command{
@@ -145,6 +146,31 @@ var commandData = &cli.Command{
 			Aliases: []string{"c"},
 			Usage:   "Specify the Config file.",
 			Value:   "config.yaml",
+		},
+	},
+}
+
+var commandTentou = &cli.Command{
+	Name:   "tentou",
+	Usage:  "Build TENTOU specification file from DOT file specified in arguments",
+	Action: CmdTentou,
+	Flags: []cli.Flag{
+		&cli.StringFlag{
+			Name:    "config",
+			Aliases: []string{"c"},
+			Usage:   "Specify the Config file.",
+			Value:   "config.yaml",
+		},
+		&cli.StringFlag{
+			Name:    "output",
+			Aliases: []string{"o"},
+			Usage:   "Specify name of output specification file.",
+			Value:   "",
+		},
+		&cli.BoolFlag{
+			Name:    "verbose",
+			Aliases: []string{"v"},
+			Usage:   "Verbose",
 		},
 	},
 }

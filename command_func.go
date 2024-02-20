@@ -10,6 +10,7 @@ import (
 	"github.com/danna2019/dot2net/pkg/clab"
 	"github.com/danna2019/dot2net/pkg/model"
 	"github.com/danna2019/dot2net/pkg/tinet"
+	"github.com/danna2019/dot2net/pkg/tentou"
 	"github.com/danna2019/dot2net/pkg/visual"
 	"github.com/urfave/cli/v2"
 )
@@ -328,4 +329,32 @@ func CmdData(c *cli.Context) error {
 	}
 	err = outputString(name, []byte(buf))
 	return err
+}
+
+func CmdTentou(c *cli.Context) error {
+	nd, cfg, err := loadContext(c)
+	if err != nil {
+		return err
+	}
+	name := c.String("output")
+
+	nm, err := model.BuildNetworkModel(cfg, nd, model.OutputTentou)
+	if err != nil {
+		return err
+	}
+
+	buffers := generateBuffers(nm.Files)
+	outputFiles(buffers, "")
+	for _, n := range nm.Nodes {
+		if !n.Virtual {
+			buffers := generateBuffers(n.Files)
+			outputFiles(buffers, n.Name)
+		}
+	}
+
+	spec, err := tentou.GetTentouSpecification(cfg, nm)
+	if err != nil {
+		return err
+	}
+	return outputString(name, spec)
 }

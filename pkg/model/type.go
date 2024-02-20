@@ -356,6 +356,7 @@ type Node struct {
 	Files      *ConfigFiles
 	TinetAttr  *map[string]interface{}
 	ClabAttr   *map[string]interface{}
+	TentouAttr  *map[string]interface{}
 
 	*NameSpace
 	*parsedLabels
@@ -452,6 +453,7 @@ type Interface struct {
 	Opposite   *Interface
 	Neighbors  map[string][]*Neighbor
 	TinetAttr  *map[string]interface{}
+	TentouAttr  *map[string]interface{}
 	// ClabAttr        *map[string]interface{}
 
 	*NameSpace
