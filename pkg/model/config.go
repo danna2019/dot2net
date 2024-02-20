@@ -405,8 +405,6 @@ type MemberClass struct {
 }
 
 type ConfigTemplate struct {
-	Type string `yaml:"type: mapstructure:"type"`
-	Version string `yaml:"version": mapstructure:"version"`
 	// Target file definition name
 	File string `yaml:"file" mapstructure:"file"`
 	// add config only for interfaces of nodes belongs to the nodeclass(es)
@@ -515,6 +513,7 @@ func LoadConfig(path string) (*Config, error) {
 
 	cfg.localDir = filepath.Dir(path)
 	cfg.fileDefinitionMap = map[string]*FileDefinition{}
+
 	for _, filedef := range cfg.FileDefinitions {
 		cfg.fileDefinitionMap[filedef.Name] = filedef
 	}

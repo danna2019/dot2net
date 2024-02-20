@@ -16,6 +16,8 @@ const FormatFile string = "file"
 const StyleLocal string = "local"
 const StyleVtysh string = "vtysh"
 const StyleFRRVtysh string = "frr-vtysh"
+const StyleTentou string = "tentou"
+
 
 type ConfigFiles struct {
 	mapper map[string]*ConfigFile
@@ -352,6 +354,8 @@ func mergeConfigShell(blocks []*configBlock) ([]string, error) {
 			lines := []string{"conf t"}
 			lines = append(lines, strings.Split(block.config, "\n")...)
 			buf = append(buf, "vtysh -c \""+strings.Join(lines, "\" -c \"")+"\"")
+		case StyleTentou:
+			buf = append(buf, strings.Split(block.config, "\n")...)
 		default:
 			fmt.Fprintf(os.Stderr, "warning: unknown style %s\n", block.style)
 			buf = append(buf, strings.Split(block.config, "\n")...)

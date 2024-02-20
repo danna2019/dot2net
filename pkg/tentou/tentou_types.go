@@ -2,32 +2,35 @@ package tentou
 
 // Containerlab topology config definition based on github.com/srl-labs/containerlab v0.34.0
 type Config struct {
-	Type     string    `json:"type,omitempty"`
+    Type     string    `json:"type,omitempty"`
     Version  string    `json:"version,omitempty"`
-	Name     string    `json:"name,omitempty"`
-	Prefix   *string   `json:"prefix,omitempty"`
-	// Mgmt     *MgmtNet  `json:"mgmt,omitempty"`
-	// Topology *Topology `json:"topology,omitempty"`
-	// Infra    *Infra    `json:"infra,omitempty`
-	Networks map[string]*NetworkDefinition `yaml:"networks,omitempty"`
-	// Nodes    map[string]*NodeDefinition `yaml:"nodes,omitempty"`
+    Name     string    `json:"name,omitempty"`
+    Networks []*NetworkDefinition `yaml:"networks,omitempty"`
     Nodes []*NodeDefinition `yaml:"nodes,omitempty"`
 }
 
+type NodeOnNetwork struct {
+    Name    string `yaml:"name,omitempty"`
+    IPAddr  string `yaml:"ipAddress,omitempty"`
+    Interface string `yaml:"Interface,omitempty"`
+}
+
 type NetworkDefinition struct {
-	Name                 string            `yaml:name,omitempty`
+    Name    string `yaml:"name,omitempty"`
+    Vlan    string `yaml:"vlan,omitempty"`
+    Nodes   []*NodeOnNetwork `yaml:"nodes,omitempty"`
 }
 
 type Files struct {
-    Name    string `yaml:name,omitempty`
-    Src     string `yaml:src,omitempty`
-    Dst     string `yaml:dst,omitempty`
+    Name    string `yaml:"name,omitempty"`
+    Src     string `yaml:"src,omitempty"`
+    Dst     string `yaml:"dst,omitempty"`
 }
 
 type Facility struct {
-    Name    string `yaml:name,omitempty`
-    Type    string `yaml:type,omitempty`
-    Settings []*Setting `yaml:settings,omitempty`
+    Name    string `yaml:"name,omitempty"`
+    Type    string `yaml:"type,omitempty"`
+    Settings []*Setting `yaml:"settings,omitempty"`
 }
 
 type Setting struct {
