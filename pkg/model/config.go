@@ -46,6 +46,8 @@ func AllOutput() []string {
 }
 
 type Config struct {
+	Type            string            `yaml:"type: mapstructure:"type"`
+	Version         string            `yaml:"version": mapstructure:"version"`
 	Name            string            `yaml:"name" mapstructure:"name"`
 	GlobalSettings  GlobalSettings    `yaml:"global" mapstructure:"global"`
 	FileDefinitions []*FileDefinition `yaml:"file" mapstructure:"file"`
@@ -217,6 +219,7 @@ type GlobalSettings struct {
 	ASNumberMax int `yaml:"asnumber_max" mapstructure:"asnumber_max"`
 
 	ClabAttr map[string]interface{} `yaml:"clab" mapstructure:"clab"` // containerlab attributes
+	TentouAttr map[string]interface{} `yaml:"tentou" mapstructure:"tentou"`
 }
 
 type FileDefinition struct {
@@ -402,6 +405,8 @@ type MemberClass struct {
 }
 
 type ConfigTemplate struct {
+	Type string `yaml:"type: mapstructure:"type"`
+	Version string `yaml:"version": mapstructure:"version"`
 	// Target file definition name
 	File string `yaml:"file" mapstructure:"file"`
 	// add config only for interfaces of nodes belongs to the nodeclass(es)

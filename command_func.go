@@ -352,9 +352,9 @@ func CmdTentou(c *cli.Context) error {
 		}
 	}
 
-	spec, err := tentou.GetTentouSpecification(cfg, nm)
+	infra, err := tentou.GetTentouInfra(cfg, nm)
 	if err != nil {
 		return err
 	}
-	return outputString(name, spec)
+	return outputString(name, infra)
 }

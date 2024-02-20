@@ -310,6 +310,7 @@ func checkClasses(cfg *Config, nm *NetworkModel) error {
 				}
 				conn.Src.TinetAttr = &cc.TinetAttr
 				// conn.Src.ClabAttr = &cc.ClabAttr
+				conn.Src.TentouAttr = &cc.TentouAttr
 				if name, exists := primaryICMap[conn.Dst]; !exists {
 					primaryICMap[conn.Dst] = cc.Name
 				} else {
@@ -317,6 +318,7 @@ func checkClasses(cfg *Config, nm *NetworkModel) error {
 				}
 				conn.Dst.TinetAttr = &cc.TinetAttr
 				// conn.Dst.ClabAttr = &cc.ClabAttr
+				conn.Dst.TentouAttr = &cc.TentouAttr
 				if cc.Prefix != "" {
 					conn.Src.namePrefix = cc.Prefix
 					conn.Dst.namePrefix = cc.Prefix
@@ -325,7 +327,7 @@ func checkClasses(cfg *Config, nm *NetworkModel) error {
 				if cc.Prefix != "" {
 					return fmt.Errorf("prefix can be specified only in primary class")
 				}
-				if len(cc.TinetAttr) > 0 || len(cc.ClabAttr) > 0 {
+				if len(cc.TinetAttr) > 0 || len(cc.ClabAttr) > 0 || len(cc.TentouAttr) > 0 {
 					return fmt.Errorf("output-specific attributes can be specified only in primary class")
 				}
 			}
@@ -440,11 +442,12 @@ func checkClasses(cfg *Config, nm *NetworkModel) error {
 					}
 					iface.TinetAttr = &ic.TinetAttr
 					// iface.ClabAttr = &ic.ClabAttr
+					iface.TentouAttr = &ic.TentouAttr
 				} else {
 					if ic.Prefix != "" {
 						return fmt.Errorf("prefix can be specified only in primary class")
 					}
-					if len(ic.TinetAttr) > 0 || len(ic.ClabAttr) > 0 {
+					if len(ic.TinetAttr) > 0 || len(ic.ClabAttr) > 0 || len(ic.TentouAttr) > 0 {
 						return fmt.Errorf("output-specific attributes can be specified only in primary class")
 					}
 				}
