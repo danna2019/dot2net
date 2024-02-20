@@ -8,7 +8,7 @@ import (
 
 	"github.com/awalterschulze/gographviz"
 
-	"github.com/cpflat/dot2net/pkg/model"
+	"github.com/danna2019/dot2net/pkg/model"
 )
 
 const ABBREVIATE_IPADDRESS = false

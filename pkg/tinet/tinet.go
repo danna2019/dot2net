@@ -7,7 +7,7 @@ import (
 
 	"github.com/goccy/go-yaml"
 
-	"github.com/cpflat/dot2net/pkg/model"
+	"github.com/danna2019/dot2net/pkg/model"
 )
 
 // Tn specification definition based on github.com/tinynetwork/tinet v0.0.2

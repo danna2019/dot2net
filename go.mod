@@ -1,4 +1,4 @@
-module github.com/cpflat/dot2net
+module github.com/danna2019/dot2net
 
 go 1.18
 

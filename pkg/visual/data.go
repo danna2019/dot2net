@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 
-	"github.com/cpflat/dot2net/pkg/model"
+	"github.com/danna2019/dot2net/pkg/model"
 )
 
 type NetworkModelData struct {
