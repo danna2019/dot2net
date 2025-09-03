@@ -53,7 +53,7 @@ func (m *TentouModule) UpdateConfig(cfg *types.Config) error {
 	cfg.AddFileFormat(fileFormat)
 	fileFormat = &types.FileFormat{
 		Name:           InfraCmdFormatName,
-		LinePrefix:     "    - ",
+		LinePrefix:     "        - ",
 		BlockSeparator: "\n",
 	}
 	cfg.AddFileFormat(fileFormat)
@@ -102,16 +102,17 @@ func (m *TentouModule) UpdateConfig(cfg *types.Config) error {
 	}
 	ct2.Template = []string{string(bytes)}
 
-	ct3 := &types.ConfigTemplate{Name: "ten_config", Depends: []string{"ten_cmds"}}
-	bytes, err = templates.ReadFile("templates/infra.yaml.node_ten_config")
-	if err != nil {
-		return err
-	}
-	ct3.Template = []string{string(bytes)}
+	//	ct3 := &types.ConfigTemplate{Name: "ten_config", Depends: []string{"ten_cmds"}}
+	//	bytes, err = templates.ReadFile("templates/infra.yaml.node_ten_config")
+	//	if err != nil {
+	//		return err
+	//	}
+	//	ct3.Template = []string{string(bytes)}
 
 	nodeClass := &types.NodeClass{
-		Name:            NodeClassName,
-		ConfigTemplates: []*types.ConfigTemplate{ct1, ct2, ct3},
+		Name: NodeClassName,
+		//		ConfigTemplates: []*types.ConfigTemplate{ct1, ct2, ct3},
+		ConfigTemplates: []*types.ConfigTemplate{ct1, ct2},
 	}
 	cfg.AddNodeClass(nodeClass)
 	m.AddModuleNodeClassLabel(NodeClassName)
@@ -141,7 +142,6 @@ func (m TentouModule) GenerateParameters(cfg *types.Config, nm *types.NetworkMod
 	for _, node := range nm.Nodes {
 		// generate file mount point descriptions
 		bindItems := []string{}
-		//urlPath, _ := node.GetParamValue(TentouBaseURLParamName)
 		urlPath := "http://vmuser190.lab.starbed.org:8080/frr/"
 		for _, fileDef := range cfg.FileDefinitions {
 			if fileDef.Path == "" {

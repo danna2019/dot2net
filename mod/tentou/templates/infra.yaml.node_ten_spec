@@ -9,3 +9,5 @@
 {{ .interfaces_ten_spec }}
         files:
 {{ ._ten_bindMounts }}
+	cmds:
+{{ .self_ten_cmds }}

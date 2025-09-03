@@ -4,7 +4,6 @@ version: 0.1
 name: {{ .name }}-infra
 
 networks:
-{{ .nodes_ten_config }}
 
 nodes:
 {{ .nodes_ten_spec }}
