@@ -1,0 +1,11 @@
+  - name: {{ .name }}
+    type: Physical
+    os: ubuntu-server-20.04-std
+    facilities:
+    - name: {{ .facility }}-{{ .name }}
+      type: {{ .facility }}
+      settings:
+        nets:
+{{ .interfaces_ten_spec }}
+        files:
+{{ ._ten_bindMounts }}
