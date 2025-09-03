@@ -59,9 +59,10 @@ const IPPolicyTypeLoopback string = "loopback"
 const OutputTinet string = "tinet"
 const OutputClab string = "clab"
 const OutputAsis string = "command"
+const OutputTentou string = "tentou"
 
 func AllOutput() []string {
-	return []string{OutputTinet, OutputClab, OutputAsis}
+	return []string{OutputTinet, OutputClab, OutputAsis, OutputTentou}
 }
 
 // config elements
@@ -457,6 +458,7 @@ type NodeClass struct {
 	MgmtInterface string                 `yaml:"mgmt_interfaceclass" mapstructure:"mgmt_interfaceclass"` // InterfaceClass name for mgmt
 	TinetAttr     map[string]interface{} `yaml:"tinet" mapstructure:"tinet"`                             // tinet attributes
 	ClabAttr      map[string]interface{} `yaml:"clab" mapstructure:"clab"`                               // containerlab attributes
+	TentouAttr    map[string]interface{} `yaml:"tentou" mapstructure:"tentou"`                           // tentou attributes
 
 	LabelOwnerClass
 }
@@ -478,9 +480,10 @@ type InterfaceClass struct {
 	MemberClasses   []*MemberClass    `yaml:"classmembers,flow" mapstructure:"classmembers,flow"`
 
 	// Following attributes are valid only on primary interface classes.
-	Prefix    string                 `yaml:"prefix" mapstructure:"prefix"` // prefix of auto-naming
-	TinetAttr map[string]interface{} `yaml:"tinet" mapstructure:"tinet"`   // tinet attributes
-	ClabAttr  map[string]interface{} `yaml:"clab" mapstructure:"clab"`     // containerlab attributes
+	Prefix     string                 `yaml:"prefix" mapstructure:"prefix"` // prefix of auto-naming
+	TinetAttr  map[string]interface{} `yaml:"tinet" mapstructure:"tinet"`   // tinet attributes
+	ClabAttr   map[string]interface{} `yaml:"clab" mapstructure:"clab"`     // containerlab attributes
+	TentouAttr map[string]interface{} `yaml:"tentou" mapstructure:"tentou"` // tentou attributes
 
 	LabelOwnerClass
 }
@@ -502,9 +505,10 @@ type ConnectionClass struct {
 	NeighborClasses []*NeighborClass  `yaml:"neighbors,flow" mapstructure:"neighbors,flow"`
 
 	// Following attributes are valid only on primary interface classes.
-	Prefix    string                 `yaml:"prefix" mapstructure:"prefix"` // prefix of interface auto-naming
-	TinetAttr map[string]interface{} `yaml:"tinet" mapstructure:"tinet"`   // tinet attributes
-	ClabAttr  map[string]interface{} `yaml:"clab" mapstructure:"clab"`     // containerlab attributes
+	Prefix     string                 `yaml:"prefix" mapstructure:"prefix"` // prefix of interface auto-naming
+	TinetAttr  map[string]interface{} `yaml:"tinet" mapstructure:"tinet"`   // tinet attributes
+	ClabAttr   map[string]interface{} `yaml:"clab" mapstructure:"clab"`     // containerlab attributes
+	TentouAttr map[string]interface{} `yaml:"tentou" mapstructure:"tentou"` // tentou attributes
 
 	LabelOwnerClass
 }

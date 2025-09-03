@@ -5,6 +5,7 @@ import (
 
 	containerlab "github.com/cpflat/dot2net/mod/containerlab"
 	frr "github.com/cpflat/dot2net/mod/frr"
+	tentou "github.com/cpflat/dot2net/mod/tentou"
 	tinet "github.com/cpflat/dot2net/mod/tinet"
 	"github.com/cpflat/dot2net/pkg/types"
 )
@@ -22,6 +23,8 @@ func LoadModules(cfg *types.Config) error {
 			m = tinet.NewModule()
 		case "containerlab":
 			m = containerlab.NewModule()
+		case "tentou":
+			m = tentou.NewModule()
 		default:
 			return fmt.Errorf("unknown module: %s", name)
 		}

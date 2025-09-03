@@ -9,6 +9,7 @@ var commands = []*cli.Command{
 	commandParams,
 	commandVisual,
 	commandData,
+	commandTentou,
 }
 
 var commandBuild = &cli.Command{
@@ -163,6 +164,37 @@ var commandData = &cli.Command{
 			Aliases: []string{"c"},
 			Usage:   "Specify the Config file.",
 			Value:   "config.yaml",
+		},
+	},
+}
+
+var commandTentou = &cli.Command{
+	Name:   "tentou",
+	Usage:  "Build TENTOU infrastructure file from DOT file specified in arguments",
+	Action: CmdTentou,
+	Flags: []cli.Flag{
+		&cli.StringFlag{
+			Name:    "config",
+			Aliases: []string{"c"},
+			Usage:   "Specify the Config file.",
+			Value:   "config.yaml",
+		},
+		&cli.StringFlag{
+			Name:    "output",
+			Aliases: []string{"o"},
+			Usage:   "Specify name of output infrastructure file.",
+			Value:   "",
+		},
+		&cli.StringFlag{
+			Name:    "profile",
+			Aliases: []string{"p"},
+			Usage:   "Profile CPU performance in generating internal config model and output to the specified file.",
+			Value:   "",
+		},
+		&cli.BoolFlag{
+			Name:    "verbose",
+			Aliases: []string{"v"},
+			Usage:   "Verbose",
 		},
 	},
 }

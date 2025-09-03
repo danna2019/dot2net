@@ -4,6 +4,7 @@ module:
   - frr
   - tinet
   - containerlab
+  - tentou
 
 file:
   - name: daemons
@@ -34,6 +35,8 @@ nodeclass:
     values:
       kind: linux
       image: quay.io/frrouting/frr:8.5.0
+      facility: frr
+      baseurl: http://vmuser190.lab.starbed.org:8080/frr/
     config:
       - file: daemons
         sourcefile: ./daemons

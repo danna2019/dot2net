@@ -440,3 +440,53 @@ func CmdData(c *cli.Context) error {
 	err = outputString(name, []byte(buf))
 	return err
 }
+
+func CmdTentou(c *cli.Context) error {
+	nd, cfg, err := loadContext(c)
+	if err != nil {
+		return err
+	}
+	// name := c.String("output")
+	verbose := c.Bool("verbose")
+	profile := c.String("profile")
+
+	// init CPU profiler
+	if profile != "" {
+		f, err := os.Create(profile)
+		if err != nil {
+			return err
+		}
+		defer func() {
+			f.Close()
+		}()
+		if err := pprof.StartCPUProfile(f); err != nil {
+			return err
+		}
+		defer pprof.StopCPUProfile()
+	}
+
+	nm, err := model.BuildNetworkModel(cfg, nd, verbose)
+	if err != nil {
+		return err
+	}
+	err = model.BuildConfigFiles(cfg, nm, verbose)
+	if err != nil {
+		return err
+	}
+
+	// buffers := generateBuffers(nm.Files)
+	// outputFiles(buffers, "")
+	// for _, n := range nm.Nodes {
+	// 	if !n.Virtual {
+	// 		buffers := generateBuffers(n.Files)
+	// 		outputFiles(buffers, n.Name)
+	// 	}
+	// }
+
+	// spec, err := tinet.GetTinetSpecification(cfg, nm)
+	// if err != nil {
+	// 	return err
+	// }
+	// return outputString(name, spec)
+	return nil
+}
