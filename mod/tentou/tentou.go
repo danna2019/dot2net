@@ -54,7 +54,7 @@ func (m *TentouModule) UpdateConfig(cfg *types.Config) error {
 	fileFormat = &types.FileFormat{
 		Name:           InfraCmdFormatName,
 		LinePrefix:     "        - ",
-		BlockSeparator: "\n",
+		BlockSeparator: "",
 	}
 	cfg.AddFileFormat(fileFormat)
 	// 	fileFormat = &types.FileFormat{
